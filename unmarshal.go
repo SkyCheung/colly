@@ -96,6 +96,10 @@ func unmarshalSelector(s *goquery.Selection, attrV reflect.Value, selector strin
 			return err
 		}
 	case reflect.String:
+		// TODO support get current tag
+		if selector != "~" {
+			s = s.Find(selector)
+		}
 		val := getDOMValue(s.Find(selector), htmlAttr)
 		attrV.Set(reflect.Indirect(reflect.ValueOf(val)))
 	case reflect.Struct:
