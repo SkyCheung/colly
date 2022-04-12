@@ -96,7 +96,7 @@ func unmarshalSelector(s *goquery.Selection, attrV reflect.Value, selector strin
 			return err
 		}
 	case reflect.String:
-		// TODO support get current tag
+		// TODO support get current tag when current is []
 		if selector != "~" {
 			s = s.Find(selector)
 		}
